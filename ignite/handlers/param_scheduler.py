@@ -874,6 +874,7 @@ class LRScheduler(ParamScheduler):
 
     def __call__(self, engine: Optional[Engine], name: Optional[str] = None) -> None:
         super(LRScheduler, self).__call__(engine, name)
+        self.lr_scheduler.step()
         self.lr_scheduler.last_epoch += 1
 
     def get_param(self) -> Union[float, List[float]]:
